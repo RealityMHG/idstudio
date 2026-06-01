@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 
+const publicAsset = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`
+
 const services = [
   {
     id: 1,
@@ -20,22 +22,22 @@ const services = [
 
 const galleryItems = [
   {
-    image: '/images/studio-gallery-1.png',
+    image: publicAsset('/images/studio-gallery-1.png'),
     title: 'Gloss work',
     meta: 'Color refresh'
   },
   {
-    image: '/images/studio-gallery-2.png',
+    image: publicAsset('/images/studio-gallery-2.png'),
     title: 'Sharp shape',
     meta: 'Cut and finish'
   },
   {
-    image: '/images/studio-gallery-3.png',
+    image: publicAsset('/images/studio-gallery-3.png'),
     title: 'Behind the chair',
     meta: 'Tone and prep'
   },
   {
-    image: '/images/studio-gallery-4.png',
+    image: publicAsset('/images/studio-gallery-4.png'),
     title: 'Soft movement',
     meta: 'Blowout styling'
   }
@@ -126,8 +128,8 @@ function PhotoshootReels() {
         <h2>Small flashes from the chair.</h2>
       </div>
       <div className="reel-grid">
-        <video src="/videos/studio-reel-1.mp4" poster="/images/studio-gallery-1.png" autoPlay muted loop playsInline preload="auto" />
-        <video src="/videos/studio-reel-2.mp4" poster="/images/studio-gallery-4.png" autoPlay muted loop playsInline preload="auto" />
+        <video src={publicAsset('/videos/studio-reel-1.mp4')} poster={publicAsset('/images/studio-gallery-1.png')} autoPlay muted loop playsInline preload="auto" />
+        <video src={publicAsset('/videos/studio-reel-2.mp4')} poster={publicAsset('/images/studio-gallery-4.png')} autoPlay muted loop playsInline preload="auto" />
       </div>
     </section>
   )
@@ -147,7 +149,7 @@ function FullscreenReel() {
 
   return (
     <section className="fullscreen-reel" aria-label="id studio photoshoot loop">
-      <video ref={videoRef} src="/videos/studio-reel-3.mp4" autoPlay muted loop playsInline preload="auto" />
+      <video ref={videoRef} src={publicAsset('/videos/studio-reel-3.mp4')} autoPlay muted loop playsInline preload="auto" />
       <div className="fullscreen-reel__caption">
         <p>In the chair</p>
         <h2>Movement, light, hair.</h2>
