@@ -76,7 +76,9 @@ a {
   font-weight: 400;
   line-height: 0.95;
   text-decoration: none;
-  text-shadow: 1px 0 var(--acid), -1px 0 var(--electric);
+  text-shadow:
+    1px 0 var(--acid),
+    -1px 0 var(--electric);
 }
 
 .site-header nav {
@@ -181,7 +183,10 @@ a {
   font-weight: 400;
   line-height: 0.9;
   text-transform: lowercase;
-  text-shadow: 3px 0 var(--acid), -2px 0 var(--electric), 0 7px rgba(0, 0, 0, 0.4);
+  text-shadow:
+    3px 0 var(--acid),
+    -2px 0 var(--electric),
+    0 7px rgba(0, 0, 0, 0.4);
   overflow-wrap: anywhere;
 }
 
@@ -278,7 +283,9 @@ a {
   line-height: 1.1;
   text-transform: lowercase;
   color: var(--ink);
-  text-shadow: 2px 0 var(--magenta), -2px 0 var(--electric);
+  text-shadow:
+    2px 0 var(--magenta),
+    -2px 0 var(--electric);
   overflow-wrap: normal;
   text-wrap: balance;
 }
@@ -368,7 +375,9 @@ a {
   font-weight: 400;
   line-height: 1.04;
   color: var(--surface);
-  text-shadow: 3px 0 var(--magenta), -3px 0 var(--electric);
+  text-shadow:
+    3px 0 var(--magenta),
+    -3px 0 var(--electric);
 }
 
 .fullscreen-reel {
@@ -531,7 +540,11 @@ a {
   letter-spacing: 0.12em;
   text-decoration: none;
   text-transform: uppercase;
-  transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease, transform 180ms ease;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
 }
 
 .booking-panel a:hover,
@@ -579,16 +592,29 @@ a {
   letter-spacing: 0.12em;
   text-decoration: none;
   text-transform: uppercase;
-  transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease, transform 180ms ease;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
 }
 
-.site-footer a:hover,
-.site-footer a:focus-visible {
+.site-footer a:nth-child(odd):hover,
+.site-footer a:nth-child(odd):focus-visible {
   background: var(--ink);
   border-color: var(--ink);
   color: var(--acid);
   outline: none;
   transform: translateY(-3px) rotate(-3deg);
+}
+
+.site-footer a:nth-child(even):hover,
+.site-footer a:nth-child(even):focus-visible {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--acid);
+  outline: none;
+  transform: translateY(-3px) rotate(3deg);
 }
 
 @media (max-width: 780px) {
@@ -865,7 +891,11 @@ a {
     margin: -4px 0 0 -4px;
     border-radius: 999px;
     background: var(--surface);
-    transition: opacity 180ms ease, width 160ms ease, height 160ms ease, margin 160ms ease;
+    transition:
+      opacity 180ms ease,
+      width 160ms ease,
+      height 160ms ease,
+      margin 160ms ease;
   }
 
   .custom-cursor-logo {
@@ -877,7 +907,9 @@ a {
     line-height: 0.8;
     letter-spacing: 0;
     text-transform: lowercase;
-    transition: opacity 180ms ease, scale 160ms ease;
+    transition:
+      opacity 180ms ease,
+      scale 160ms ease;
   }
 
   .custom-cursor-logo span {
