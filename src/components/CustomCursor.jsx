@@ -1,23 +1,38 @@
 import React, { useEffect, useRef } from 'react'
+import useReducedMotion from '../hooks/useReducedMotion'
 
-const logoStyles = ['serif-white', 'sans-rose', 'italic-gold', 'outline-black', 'mono-blue']
+const logoStyles = ['display', 'serif', 'italic', 'outline', 'mono']
 
 export default function CustomCursor() {
   const cursorRef = useRef(null)
   const logoRef = useRef(null)
+  const reducedMotion = useReducedMotion()
 
   useEffect(() => {
     const cursor = cursorRef.current
     const logo = logoRef.current
 
-    if (!cursor || !logo || !window.matchMedia('(pointer: fine)').matches) return
+    const finePointer = window.matchMedia('(pointer: fine) and (hover: hover)')
+    if (!cursor || !logo || reducedMotion || !finePointer.matches) return
 
     let logoX = 0
     let logoY = 0
     let targetX = 0
     let targetY = 0
     let frameId = 0
+    let visible = false
     let styleIndex = 0
+    let styleTimer = 0
+
+    logo.dataset.style = logoStyles[styleIndex]
+
+    const startStyleCycle = () => {
+      if (styleTimer) return
+      styleTimer = window.setInterval(() => {
+        styleIndex = (styleIndex + 1) % logoStyles.length
+        logo.dataset.style = logoStyles[styleIndex]
+      }, 1000)
+    }
 
     const render = () => {
       logoX += (targetX - logoX) * 0.18
@@ -26,19 +41,39 @@ export default function CustomCursor() {
       cursor.style.transform = `translate3d(${targetX}px, ${targetY}px, 0)`
       logo.style.transform = `translate3d(${logoX}px, ${logoY - 46}px, 0)`
 
-      frameId = window.requestAnimationFrame(render)
+      if (visible && (Math.abs(targetX - logoX) > 0.1 || Math.abs(targetY - logoY) > 0.1)) {
+        frameId = window.requestAnimationFrame(render)
+      } else {
+        frameId = 0
+      }
     }
 
     const handleMove = (event) => {
+      if (!finePointer.matches || event.pointerType === 'touch') return
       targetX = event.clientX
       targetY = event.clientY
+      if (!visible) {
+        logoX = targetX
+        logoY = targetY
+      }
+      visible = true
       cursor.classList.add('is-visible')
       logo.classList.add('is-visible')
+      logo.classList.toggle('is-link', Boolean(event.target.closest('a, button')))
+      startStyleCycle()
+      if (!frameId) frameId = window.requestAnimationFrame(render)
     }
 
     const handleLeave = () => {
+      visible = false
       cursor.classList.remove('is-visible')
       logo.classList.remove('is-visible')
+      cursor.classList.remove('is-pressed')
+      logo.classList.remove('is-pressed')
+      window.cancelAnimationFrame(frameId)
+      frameId = 0
+      window.clearInterval(styleTimer)
+      styleTimer = 0
     }
 
     const handleDown = () => {
@@ -51,32 +86,41 @@ export default function CustomCursor() {
       logo.classList.remove('is-pressed')
     }
 
-    const styleTimer = window.setInterval(() => {
-      styleIndex = (styleIndex + 1) % logoStyles.length
-      logo.dataset.style = logoStyles[styleIndex]
-    }, 950)
-
-    logo.dataset.style = logoStyles[styleIndex]
-    frameId = window.requestAnimationFrame(render)
-    window.addEventListener('mousemove', handleMove, { passive: true })
-    window.addEventListener('mouseleave', handleLeave)
-    window.addEventListener('mousedown', handleDown)
-    window.addEventListener('mouseup', handleUp)
+    const handleKey = (event) => {
+      if (event.key === 'Tab' || event.key === 'Escape') handleLeave()
+    }
+    const handleVisibility = () => {
+      if (document.hidden) handleLeave()
+    }
+    document.documentElement.classList.add('has-custom-cursor')
+    window.addEventListener('pointermove', handleMove, { passive: true })
+    document.documentElement.addEventListener('pointerleave', handleLeave)
+    window.addEventListener('blur', handleLeave)
+    window.addEventListener('pointerdown', handleDown)
+    window.addEventListener('pointerup', handleUp)
+    window.addEventListener('keydown', handleKey)
+    document.addEventListener('visibilitychange', handleVisibility)
+    finePointer.addEventListener('change', handleLeave)
 
     return () => {
-      window.clearInterval(styleTimer)
+      handleLeave()
+      document.documentElement.classList.remove('has-custom-cursor')
       window.cancelAnimationFrame(frameId)
-      window.removeEventListener('mousemove', handleMove)
-      window.removeEventListener('mouseleave', handleLeave)
-      window.removeEventListener('mousedown', handleDown)
-      window.removeEventListener('mouseup', handleUp)
+      window.removeEventListener('pointermove', handleMove)
+      document.documentElement.removeEventListener('pointerleave', handleLeave)
+      window.removeEventListener('blur', handleLeave)
+      window.removeEventListener('pointerdown', handleDown)
+      window.removeEventListener('pointerup', handleUp)
+      window.removeEventListener('keydown', handleKey)
+      document.removeEventListener('visibilitychange', handleVisibility)
+      finePointer.removeEventListener('change', handleLeave)
     }
-  }, [])
+  }, [reducedMotion])
 
   return (
     <>
       <div className="custom-cursor-logo" ref={logoRef} aria-hidden="true">
-        <span>id</span>
+        <span>ID</span>
       </div>
       <div className="custom-cursor-dot" ref={cursorRef} aria-hidden="true" />
     </>

@@ -10,7 +10,7 @@ export default function App() {
     <div className="app">
       <CustomCursor />
       <Header />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <Hero />
         <ContentSection />
       </main>
