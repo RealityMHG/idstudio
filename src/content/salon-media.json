@@ -1,0 +1,225 @@
+{
+  "photos": {
+    "sculptural-blue": {
+      "source": "id_hairstudio/3730988912643702274_3730988904800342983.jpg",
+      "width": 1440,
+      "height": 1919,
+      "widths": [
+        360,
+        640,
+        960,
+        1440
+      ],
+      "alt": "Profile of a model with sculptural ponytails wrapped in white cord, against a pale blue backdrop.",
+      "position": "50% 0%"
+    },
+    "studio-interior": {
+      "source": "id_hairstudio/3601183638994168972_3601183630899144130.jpg",
+      "width": 1440,
+      "height": 1800,
+      "widths": [
+        360,
+        640,
+        960,
+        1440
+      ],
+      "alt": "ID Hairstudio interior with illuminated mirrors, black styling chairs, wooden flooring and tall plants.",
+      "position": "50% 55%"
+    },
+    "consultation": {
+      "source": "id_hairstudio/3469902183874560140_3469902178833015967.jpg",
+      "width": 1440,
+      "height": 1800,
+      "widths": [
+        360,
+        640,
+        960,
+        1440
+      ],
+      "alt": "A stylist shaping a client’s long blonde waves beside the salon’s illuminated mirror.",
+      "position": "50% 18%",
+      "mobilePosition": "50% 45%"
+    },
+    "short-editorial": {
+      "source": "id_hairstudio/3473681330421870726_3473681325489251563.jpg",
+      "width": 1440,
+      "height": 1800,
+      "widths": [
+        360,
+        640,
+        960,
+        1440
+      ],
+      "alt": "Editorial portrait with a short chestnut cut, side-swept fringe and a dark tailored jacket.",
+      "position": "50% 25%"
+    },
+    "blonde-layers": {
+      "source": "id_hairstudio/3724287008102444169_3723911507500394111.jpg",
+      "width": 1170,
+      "height": 1552,
+      "widths": [
+        360,
+        640,
+        960,
+        1170
+      ],
+      "alt": "Side view of a shoulder-length blonde cut with soft layers and a sweeping fringe.",
+      "position": "50% 35%"
+    },
+    "braided-editorial": {
+      "source": "id_hairstudio/2790361744020947714_2790361739725938761.jpg",
+      "width": 1440,
+      "height": 1799,
+      "widths": [
+        360,
+        640,
+        960,
+        1440
+      ],
+      "alt": "Profile showing sculpted dark braids and loose waves, paired with a patterned fashion look.",
+      "position": "50% 18%"
+    },
+    "runway-shapes": {
+      "source": "id_hairstudio/2950536502581598438_2950536499184075923.jpg",
+      "width": 1440,
+      "height": 1798,
+      "widths": [
+        360,
+        640,
+        960,
+        1440
+      ],
+      "alt": "Two models with sculptural upright ponytails and dusty rose outfits against a dark backstage wall.",
+      "position": "50% 10%"
+    },
+    "orange-spikes": {
+      "source": "id_hairstudio/2777329991572345071_2777329987210407362.jpg",
+      "width": 1440,
+      "height": 1800,
+      "widths": [
+        360,
+        640,
+        960,
+        1440
+      ],
+      "alt": "Bright orange liberty spikes with silver rings, seen from behind and reflected in the salon mirror.",
+      "position": "50% 50%"
+    },
+    "blue-editorial": {
+      "source": "id_hairstudio/2808926952724896068_2808926949235273016.jpg",
+      "width": 1440,
+      "height": 1796,
+      "widths": [
+        360,
+        640,
+        960,
+        1440
+      ],
+      "alt": "Editorial portrait with sculpted dark hair held by silver clips, vivid blue face paint and a deconstructed denim outfit.",
+      "position": "50% 0%"
+    },
+    "pink-texture": {
+      "source": "id_hairstudio/3002688099998443708_3002688096961722362.jpg",
+      "width": 1440,
+      "height": 1799,
+      "widths": [
+        360,
+        640,
+        960,
+        1440
+      ],
+      "alt": "Curly asymmetric updo with sculpted side waves, a pink jacket and a vivid fuchsia backdrop.",
+      "position": "50% 15%"
+    },
+    "precision-cut": {
+      "source": "id_hairstudio/2795391338092254087_2795391333830993939.jpg",
+      "width": 1440,
+      "height": 1800,
+      "widths": [
+        360,
+        640,
+        960,
+        1440
+      ],
+      "alt": "Black-and-white profile of a short dark haircut with a clean outline around the ear and neck.",
+      "position": "50% 18%"
+    },
+    "dimensional-blonde": {
+      "source": "id_hairstudio/2999641175607119159_2999641172209701634.jpg",
+      "width": 1440,
+      "height": 1800,
+      "widths": [
+        360,
+        640,
+        960,
+        1440
+      ],
+      "alt": "Long blonde waves with darker roots and fine tonal highlights, photographed inside the salon.",
+      "position": "50% 32%"
+    },
+    "event-waves": {
+      "source": "id_hairstudio/3783272872320876518_3783272866574647524.jpg",
+      "width": 1440,
+      "height": 1799,
+      "widths": [
+        360,
+        640,
+        960,
+        1440
+      ],
+      "alt": "A smiling client with glossy side-swept dark waves and an ivory off-the-shoulder dress.",
+      "position": "50% 20%"
+    },
+    "behind-the-chair": {
+      "source": "id_hairstudio/3905512675685864123_3905510055573347505.jpg",
+      "width": 1066,
+      "height": 1421,
+      "widths": [
+        360,
+        640,
+        960,
+        1066
+      ],
+      "alt": "Black-and-white view through a doorway of a stylist working on a seated client’s hair.",
+      "position": "50% 50%"
+    },
+    "blonde-in-progress": {
+      "source": "id_hairstudio/3601183638994168972_3601183630857080343.jpg",
+      "width": 1440,
+      "height": 1800,
+      "widths": [
+        360,
+        640,
+        960,
+        1440
+      ],
+      "alt": "A stylist finishing long blonde hair at a black styling chair beneath a pendant lamp in the salon.",
+      "position": "50% 42%"
+    },
+    "sculpture-in-progress": {
+      "source": "id_hairstudio/3747698893061420042_3747683280972692454.jpg",
+      "width": 1170,
+      "height": 1560,
+      "widths": [
+        360,
+        640,
+        960,
+        1170
+      ],
+      "alt": "A stylist wrapping a sculptural ponytail in white cord behind a seated model, against a turquoise backdrop.",
+      "position": "50% 25%"
+    }
+  },
+  "videos": {
+    "blonde-in-progress": {
+      "source": "id_hairstudio/3601183638994168972_3601181984030905734.mp4",
+      "width": 720,
+      "height": 900
+    },
+    "sculpture-in-progress": {
+      "source": "id_hairstudio/3722309172214923819.mp4",
+      "width": 720,
+      "height": 1280
+    }
+  }
+}

@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useId, useRef, useState } from 'react';
 import useReducedMotion from '../hooks/useReducedMotion';
+import SalonImage from './SalonImage';
 
 // Each reel only downloads and plays as it approaches the viewport.
-export default function MediaReel({ src, poster, label, children, className = '' }) {
+export default function MediaReel({ src, poster, posterImage, width, height, label, children, className = '' }) {
   const videoRef = useRef(null);
   const playRequestRef = useRef(0);
   const statusId = useId();
@@ -10,6 +11,7 @@ export default function MediaReel({ src, poster, label, children, className = ''
   const [nearViewport, setNearViewport] = useState(false);
   const [inView, setInView] = useState(false);
   const [playing, setPlaying] = useState(false);
+  const [ready, setReady] = useState(false);
   const [playPreference, setPlayPreference] = useState(null);
   const [playbackIssue, setPlaybackIssue] = useState(null);
 
@@ -99,12 +101,16 @@ export default function MediaReel({ src, poster, label, children, className = ''
         ref={videoRef}
         src={nearViewport ? src : undefined}
         poster={poster}
+        width={width}
+        height={height}
+        style={{ objectPosition: posterImage?.position }}
         aria-label={label}
         muted
         loop
         playsInline
         controls={playbackIssue === 'blocked'}
         preload={nearViewport && !reducedMotion ? 'metadata' : 'none'}
+        onLoadedData={() => setReady(true)}
         onPlay={() => {
           setPlaying(true);
           setPlaybackIssue(null);
@@ -112,9 +118,13 @@ export default function MediaReel({ src, poster, label, children, className = ''
         onPause={() => setPlaying(false)}
         onError={() => {
           setPlaying(false);
+          setReady(false);
           setPlaybackIssue('unavailable');
         }}
       />
+      {posterImage && !ready && (
+        <SalonImage image={posterImage} className="media-reel__poster" sizes="(max-width: 780px) 90vw, 45vw" />
+      )}
       {children}
       {playbackIssue && (
         <p className="media-status" id={statusId} role="status">
