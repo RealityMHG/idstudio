@@ -12,8 +12,7 @@ export default function CustomCursor() {
     const cursor = cursorRef.current
     const logo = logoRef.current
 
-    const finePointer = window.matchMedia('(pointer: fine) and (hover: hover)')
-    if (!cursor || !logo || reducedMotion || !finePointer.matches) return
+    if (!cursor || !logo || reducedMotion) return
 
     let logoX = 0
     let logoY = 0
@@ -49,7 +48,11 @@ export default function CustomCursor() {
     }
 
     const handleMove = (event) => {
-      if (!finePointer.matches || event.pointerType === 'touch') return
+      // The actual input supports hybrids and mice connected after page load.
+      if (event.pointerType !== 'mouse') {
+        handleLeave()
+        return
+      }
       targetX = event.clientX
       targetY = event.clientY
       if (!visible) {
@@ -57,6 +60,7 @@ export default function CustomCursor() {
         logoY = targetY
       }
       visible = true
+      document.documentElement.classList.add('has-custom-cursor')
       cursor.classList.add('is-visible')
       logo.classList.add('is-visible')
       logo.classList.toggle('is-link', Boolean(event.target.closest('a, button')))
@@ -66,6 +70,7 @@ export default function CustomCursor() {
 
     const handleLeave = () => {
       visible = false
+      document.documentElement.classList.remove('has-custom-cursor')
       cursor.classList.remove('is-visible')
       logo.classList.remove('is-visible')
       cursor.classList.remove('is-pressed')
@@ -76,7 +81,12 @@ export default function CustomCursor() {
       styleTimer = 0
     }
 
-    const handleDown = () => {
+    const handleDown = (event) => {
+      if (event.pointerType !== 'mouse') {
+        handleLeave()
+        return
+      }
+      if (!visible) return
       cursor.classList.add('is-pressed')
       logo.classList.add('is-pressed')
     }
@@ -92,7 +102,6 @@ export default function CustomCursor() {
     const handleVisibility = () => {
       if (document.hidden) handleLeave()
     }
-    document.documentElement.classList.add('has-custom-cursor')
     window.addEventListener('pointermove', handleMove, { passive: true })
     document.documentElement.addEventListener('pointerleave', handleLeave)
     window.addEventListener('blur', handleLeave)
@@ -100,7 +109,6 @@ export default function CustomCursor() {
     window.addEventListener('pointerup', handleUp)
     window.addEventListener('keydown', handleKey)
     document.addEventListener('visibilitychange', handleVisibility)
-    finePointer.addEventListener('change', handleLeave)
 
     return () => {
       handleLeave()
@@ -113,7 +121,6 @@ export default function CustomCursor() {
       window.removeEventListener('pointerup', handleUp)
       window.removeEventListener('keydown', handleKey)
       document.removeEventListener('visibilitychange', handleVisibility)
-      finePointer.removeEventListener('change', handleLeave)
     }
   }, [reducedMotion])
 

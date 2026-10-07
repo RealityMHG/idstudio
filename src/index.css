@@ -453,6 +453,22 @@ main:focus { outline: none; }
   transition: color var(--motion-fast) var(--ease), background-color var(--motion-fast) var(--ease);
 }
 .media-control span { font-size: 18px; line-height: 1; }
+.media-status {
+  position: absolute;
+  z-index: 3;
+  top: 74px;
+  right: 18px;
+  left: 18px;
+  width: fit-content;
+  margin: 0 0 0 auto;
+  padding: 8px 12px;
+  background: var(--ink);
+  color: var(--bg);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.5;
+  pointer-events: none;
+}
 .fullscreen-reel { background: var(--ink); color: var(--surface); }
 .fullscreen-reel .media-reel { min-height: 90svh; }
 .fullscreen-reel video { height: 90svh; min-height: 560px; }
@@ -631,9 +647,9 @@ button:active, .booking-panel a:active { transform: translateY(1px); }
   .lookbook-card img { height: 280px; }
 }
 
-@media (pointer: fine) and (hover: hover) and (prefers-reduced-motion: no-preference) {
+@media (prefers-reduced-motion: no-preference) {
   .has-custom-cursor body, .has-custom-cursor a, .has-custom-cursor button { cursor: none; }
-  .custom-cursor-dot, .custom-cursor-logo {
+  .has-custom-cursor .custom-cursor-dot, .has-custom-cursor .custom-cursor-logo {
     position: fixed;
     top: 0;
     left: 0;
