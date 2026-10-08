@@ -1,5 +1,7 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import useReducedMotion from '../hooks/useReducedMotion';
+import EditorialPhoto from './EditorialPhoto';
+import { salonImages } from '../content/salonImages';
 
 const words = ['CUT', 'COLOR', 'TEXTURE', 'IDENTITY'];
 const framePoints = [[1, 80], [1, 1], [1120, 1], [1199, 80], [1199, 599], [80, 599], [1, 520]];
@@ -114,6 +116,8 @@ export default function StatementPoster() {
     <section
       className={`statement-poster${paused || reducedMotion || !inView || !tabVisible ? ' is-paused' : ''}`}
       aria-labelledby="statement-title"
+      data-scroll-scene
+      data-motion-paused={paused ? 'true' : undefined}
     >
       <div className="statement-poster__meta">
         <span>ID HAIR STUDIO</span>
@@ -138,10 +142,15 @@ export default function StatementPoster() {
         </svg>
         <span className="statement-poster__side" aria-hidden="true">CUT / COLOR / CREATE</span>
       </div>
+      <div className="statement-poster__gallery">
+        {salonImages.neon.map(({ image, caption }, index) => (
+          <EditorialPhoto key={caption} image={image} caption={caption} sizes={`(max-width: 780px) ${[42, 56, 62][index]}vw, ${[30, 42, 32][index]}vw`} />
+        ))}
+      </div>
       <div className="statement-poster__footer">
         <p>"A good appointment should feel specific, not scripted."</p>
         {!reducedMotion && (
-          <button className="poster-control" aria-controls="statement-marquee" onClick={() => setPaused((value) => !value)}>
+          <button className="poster-control" aria-controls="statement-marquee" aria-pressed={paused} onClick={() => setPaused((value) => !value)}>
             {paused ? 'Play motion' : 'Pause motion'}
           </button>
         )}
